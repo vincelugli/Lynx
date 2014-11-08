@@ -49,7 +49,7 @@
         android:layout_alignBottom="@+id/button1"
         android:layout_alignRight="@+id/editText1"
         android:text="@string/register" 
-        android:onclick="register"/>
+        android:onClick="register"/>
 
     <EditText
         android:id="@+id/editText1"
