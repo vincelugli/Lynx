@@ -28,11 +28,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
+import com.microsoft.windowsazure.mobileservices.*;
 
 /**
  * A login screen that offers login via username/password.
  */
 public class SignInActivity extends Activity implements LoaderCallbacks<Cursor> {
+	
+	//THIS IS THE AZURE MOBILE SERVICE CLIENT
+	private MobileServiceClient mClient;
 
 	/**
 	 * A dummy authentication store containing known user names and passwords.
@@ -82,6 +86,13 @@ public class SignInActivity extends Activity implements LoaderCallbacks<Cursor> 
 				attemptLogin();
 			}
 		});
+		
+		try {
+			mClient = new MobileServiceClient( "https://lynx.azure-mobile.net/", "NWBRWeBTcFOGerBkvTHyLVMQnBgsNw92", this );
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		mLoginFormView = findViewById(R.id.login_form);
 		mProgressView = findViewById(R.id.login_progress);
@@ -313,7 +324,7 @@ public class SignInActivity extends Activity implements LoaderCallbacks<Cursor> 
 	 * the user.
 	 */
 	public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-
+		
 		private final String mUsername;
 		private final String mPassword;
 
