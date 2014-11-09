@@ -9,5 +9,6 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="hello_world">Hello world!</string>
+    <string name="facebook_app_id">870809469626549</string>
 
 </resources>
