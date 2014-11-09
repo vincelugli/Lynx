@@ -8,6 +8,7 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="display_name">Display Name</string>
+    <string name="confirm_password">Confirm Password</string>
 
 </resources>
