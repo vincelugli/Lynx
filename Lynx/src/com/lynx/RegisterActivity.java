@@ -18,6 +18,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 public class RegisterActivity extends Activity {
@@ -37,10 +39,9 @@ public class RegisterActivity extends Activity {
 	ViewPager mViewPager;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		final ActionBar actionBar = getActionBar();
-		
+	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.activity_register);
 
 		// Create the adapter that will return a fragment for each of the three
@@ -58,7 +59,8 @@ public class RegisterActivity extends Activity {
 						getActionBar().setSelectedNavigationItem(position);
 					}
 				});
-		
+
+		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
 		ActionBar.TabListener tabListener = new ActionBar.TabListener() {

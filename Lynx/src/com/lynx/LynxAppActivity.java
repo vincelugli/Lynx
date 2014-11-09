@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,7 +29,7 @@ public class LynxAppActivity extends Activity {
 		
 		layout.setId(9999);
 		
-		getFragmentManager().beginTransaction().add(layout.getId(), UserFragment.newInstance("TESTING"), "user 1").commit();
+		getFragmentManager().beginTransaction().add(layout.getId(), UserFragment.newInstance("USER 1"), "user 1").commit();
 		getFragmentManager().beginTransaction().add(layout.getId(), UserFragment.newInstance("USER 2"), "user 2").commit();
 		getFragmentManager().beginTransaction().add(layout.getId(), UserFragment.newInstance("USER 3"), "user 3").commit();
 		getFragmentManager().beginTransaction().add(layout.getId(), UserFragment.newInstance("USER 4"), "user 4").commit();
@@ -82,5 +83,11 @@ public class LynxAppActivity extends Activity {
 	        ((TextView) rootView.findViewById(R.id.userText)).setText(getArguments().getString("text"));
 			return rootView;
 		}
+	}
+	
+	public void goToUserInfo(View view) {
+		Intent userInfoIntent = new Intent(this, UserInfoActivity.class);
+		
+		startActivity(userInfoIntent);
 	}
 }
