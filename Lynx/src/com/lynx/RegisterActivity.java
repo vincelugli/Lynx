@@ -7,6 +7,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.ActionBar.Tab;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -36,6 +37,8 @@ public class RegisterActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		final ActionBar actionBar = getActionBar();
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
 
@@ -46,7 +49,113 @@ public class RegisterActivity extends Activity {
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+		mViewPager.setOnPageChangeListener(
+				new ViewPager.SimpleOnPageChangeListener() {
+					@Override
+					public void onPageSelected(int position) {
+						// Select tab when swiping.
+						getActionBar().setSelectedNavigationItem(position);
+					}
+				});
+		
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		
+		ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+			
+			@Override
+			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+				// show the given tab
+			}
+			
+			@Override
+			public void onTabSelected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+				// hide the given tab
+				mViewPager.setCurrentItem(tab.getPosition());
+			}
+			
+			@Override
+			public void onTabReselected(Tab tab, FragmentTransaction ft) {
+				// TODO Auto-generated method stub
+				// probably ignore this event
+			}
+		};
+		
+//		class CustomTabListener<T extends Fragment> implements ActionBar.TabListener {
+//			
+//			private Fragment fragment;
+//			
+//			private static final	 String TAG = "test";
+//			
+//			public CustomTabListener(Fragment fragment) {
+//				this.fragment = fragment;
+//			}
+//
+//			@Override
+//			public void onTabSelected(Tab tab, FragmentTransaction ft) {
+//				// TODO Auto-generated method stub
+//				mViewPager.setCurrentItem(tab.getPosition());
+//			}
+//
+//			@Override
+//			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+//				// TODO Auto-generated method stub
+//			}
+//
+//			@Override
+//			public void onTabReselected(Tab tab, FragmentTransaction ft) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//		}
 
+//		Tab registerTab = actionBar.newTab();
+//		Tab facebookTab = actionBar.newTab();
+//		Tab linkedInTab = actionBar.newTab();
+//		Tab googleTab = actionBar.newTab();
+//		Tab twitterTab = actionBar.newTab();
+//		Tab goTab = actionBar.newTab();
+//		
+//		// Initialize Fragments
+//		FacebookFragment facebook = new FacebookFragment();
+//		
+//		// Update Tabs
+//		facebookTab.setText("BLARRRG")
+//					.setContentDescription("Facebook Tab")
+//					.setTabListener(new CustomTabListener<FacebookFragment>(facebook));
+		
+		// Add tabs to action bar
+		actionBar.addTab(
+				actionBar.newTab()
+					.setText("Register")
+					.setTabListener(tabListener));
+		
+		actionBar.addTab(
+				actionBar.newTab()
+					.setText("Facebook")
+					.setTabListener(tabListener));
+		
+		actionBar.addTab(
+				actionBar.newTab()
+					.setText("LinkedIn")
+					.setTabListener(tabListener));
+		
+		actionBar.addTab(
+				actionBar.newTab()
+					.setText("Google+")
+					.setTabListener(tabListener));
+		
+		actionBar.addTab(
+				actionBar.newTab()
+					.setText("Twitter")
+					.setTabListener(tabListener));
+		
+		actionBar.addTab(
+				actionBar.newTab()
+					.setText("Go!")
+					.setTabListener(tabListener));
+		
 	}
 
 	@Override
@@ -81,15 +190,28 @@ public class RegisterActivity extends Activity {
 		@Override
 		public Fragment getItem(int position) {
 			// getItem is called to instantiate the fragment for the given page.
-			// Return a PlaceholderFragment (defined as a static inner class
-			// below).
-			return PlaceholderFragment.newInstance(position + 1);
+			
+			switch (position) {
+			case 0:
+				return RegisterFragment.newInstance(position);
+			case 1:
+				return FacebookFragment.newInstance(position);
+			case 2:
+				return LinkedInFragment.newInstance(position);
+			case 3:
+				return GoogleFragment.newInstance(position);
+			case 4:
+				return TwitterFragment.newInstance(position);
+			case 5:
+				return GoFragment.newInstance(position);
+			}
+			return RegisterFragment.newInstance(position);
 		}
 
 		@Override
 		public int getCount() {
-			// Show 3 total pages.
-			return 3;
+			// Show 6 total pages.
+			return 6;
 		}
 
 		@Override
@@ -102,6 +224,12 @@ public class RegisterActivity extends Activity {
 				return getString(R.string.title_section2).toUpperCase(l);
 			case 2:
 				return getString(R.string.title_section3).toUpperCase(l);
+			case 3:
+				return getString(R.string.title_section3).toUpperCase(l);
+			case 4:
+				return getString(R.string.title_section3).toUpperCase(l);
+			case 5:
+				return getString(R.string.title_section3).toUpperCase(l);
 			}
 			return null;
 		}
@@ -110,7 +238,7 @@ public class RegisterActivity extends Activity {
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
-	public static class PlaceholderFragment extends Fragment {
+	public static class RegisterFragment extends Fragment {
 		/**
 		 * The fragment argument representing the section number for this
 		 * fragment.
@@ -120,15 +248,15 @@ public class RegisterActivity extends Activity {
 		/**
 		 * Returns a new instance of this fragment for the given section number.
 		 */
-		public static PlaceholderFragment newInstance(int sectionNumber) {
-			PlaceholderFragment fragment = new PlaceholderFragment();
+		public static RegisterFragment newInstance(int sectionNumber) {
+			RegisterFragment fragment = new RegisterFragment();
 			Bundle args = new Bundle();
 			args.putInt(ARG_SECTION_NUMBER, sectionNumber);
 			fragment.setArguments(args);
 			return fragment;
 		}
 
-		public PlaceholderFragment() {
+		public RegisterFragment() {
 		}
 
 		@Override
@@ -139,5 +267,164 @@ public class RegisterActivity extends Activity {
 			return rootView;
 		}
 	}
+	
+	// Facebook Fragment
+	public static class FacebookFragment extends Fragment {
+		
+		/**
+		 * The fragment argument representing the section number for this
+		 * fragment.
+		 */
+		private static final String ARG_SECTION_NUMBER = "section_number";
 
+		/**
+		 * Returns a new instance of this fragment for the given section number.
+		 */
+		public static FacebookFragment newInstance(int sectionNumber) {
+			FacebookFragment fragment = new FacebookFragment();
+			Bundle args = new Bundle();
+			args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+			fragment.setArguments(args);
+			return fragment;
+		}
+
+		public FacebookFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_facebook,
+					container, false);
+			return rootView;
+		}
+	}
+	
+	// LinkedIn Fragment
+	public static class LinkedInFragment extends Fragment {
+		
+		/**
+		 * The fragment argument representing the section number for this
+		 * fragment.
+		 */
+		private static final String ARG_SECTION_NUMBER = "section_number";
+
+		/**
+		 * Returns a new instance of this fragment for the given section number.
+		 */
+		public static LinkedInFragment newInstance(int sectionNumber) {
+			LinkedInFragment fragment = new LinkedInFragment();
+			Bundle args = new Bundle();
+			args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+			fragment.setArguments(args);
+			return fragment;
+		}
+
+		public LinkedInFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_linkedin,
+					container, false);
+			return rootView;
+		}
+	}
+	
+	// Google Fragment
+	public static class GoogleFragment extends Fragment {
+		
+		/**
+		 * The fragment argument representing the section number for this
+		 * fragment.
+		 */
+		private static final String ARG_SECTION_NUMBER = "section_number";
+
+		/**
+		 * Returns a new instance of this fragment for the given section number.
+		 */
+		public static GoogleFragment newInstance(int sectionNumber) {
+			GoogleFragment fragment = new GoogleFragment();
+			Bundle args = new Bundle();
+			args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+			fragment.setArguments(args);
+			return fragment;
+		}
+
+		public GoogleFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_google,
+					container, false);
+			return rootView;
+		}
+	}
+	
+	// Twitter Fragment
+	public static class TwitterFragment extends Fragment {
+		
+		/**
+		 * The fragment argument representing the section number for this
+		 * fragment.
+		 */
+		private static final String ARG_SECTION_NUMBER = "section_number";
+
+		/**
+		 * Returns a new instance of this fragment for the given section number.
+		 */
+		public static TwitterFragment newInstance(int sectionNumber) {
+			TwitterFragment fragment = new TwitterFragment();
+			Bundle args = new Bundle();
+			args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+			fragment.setArguments(args);
+			return fragment;
+		}
+
+		public TwitterFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_twitter,
+					container, false);
+			return rootView;
+		}
+	}
+	
+	// Go Fragment
+	public static class GoFragment extends Fragment {
+		
+		/**
+		 * The fragment argument representing the section number for this
+		 * fragment.
+		 */
+		private static final String ARG_SECTION_NUMBER = "section_number";
+
+		/**
+		 * Returns a new instance of this fragment for the given section number.
+		 */
+		public static GoFragment newInstance(int sectionNumber) {
+			GoFragment fragment = new GoFragment();
+			Bundle args = new Bundle();
+			args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+			fragment.setArguments(args);
+			return fragment;
+		}
+
+		public GoFragment() {
+		}
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			View rootView = inflater.inflate(R.layout.fragment_go,
+					container, false);
+			return rootView;
+		}
+	}
 }

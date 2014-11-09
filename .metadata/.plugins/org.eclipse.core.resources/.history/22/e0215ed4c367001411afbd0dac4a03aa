@@ -1,0 +1,7 @@
+package com.lynx;
+
+import android.app.Fragment;
+
+public class FacebookFragment extends Fragment {
+
+}
