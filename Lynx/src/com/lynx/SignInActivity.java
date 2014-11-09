@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.ContentResolver;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -129,7 +130,11 @@ public class SignInActivity extends Activity implements LoaderCallbacks<Cursor> 
 		View focusView = null;
 
 		// Check for a valid password, if the user entered one.
-		if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+		if (TextUtils.isEmpty(password)) {
+			register(focusView);
+		}
+		else if (!isPasswordValid(password)) {
+			// TODO: Add register method call
 			mPasswordView.setError(getString(R.string.error_invalid_password));
 			focusView = mPasswordView;
 			cancel = true;
@@ -167,6 +172,12 @@ public class SignInActivity extends Activity implements LoaderCallbacks<Cursor> 
 	private boolean isPasswordValid(String password) {
 		// TODO: Replace this with your own logic
 		return password.length() > 4;
+	}
+	
+	public void register(View view) {
+		Intent registerIntent = new Intent (this, RegisterActivity.class);
+		
+		startActivity(registerIntent);
 	}
 
 	/**

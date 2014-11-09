@@ -18,24 +18,36 @@
         android:text="@string/title"
         android:textSize="50sp" />
 
-    <Button
-        android:id="@+id/button1"
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="55dp"
-        android:onClick="login"
-        android:text="@string/login" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="40dp"
-        android:onClick="register"
-        android:text="@string/register" />
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/sign_in_register_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
+            android:layout_weight="1"
+            android:onClick="login"
+            android:text="@string/login"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/register_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:layout_weight="1"
+            android:onClick="register"
+            android:text="@string/register"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </RelativeLayout>
