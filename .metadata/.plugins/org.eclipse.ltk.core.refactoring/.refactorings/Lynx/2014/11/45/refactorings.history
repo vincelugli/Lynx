@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename package &apos;com.tinder4jesse&apos; to &apos;com.lynx&apos;&#x0D;&#x0A;- Original project: &apos;Lynx&apos;&#x0D;&#x0A;- Original element: &apos;Lynx/src/com.tinder4jesse&apos;&#x0D;&#x0A;- Renamed element: &apos;Lynx/src/com.lynx&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.tinder4jesse&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.tinder4jesse" name="com.lynx" qualified="false" references="true" stamp="1415472170231" textual="false" version="1.0"/>
-</session>

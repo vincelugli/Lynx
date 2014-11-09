@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="14"
         android:targetSdkVersion="19" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -28,10 +28,20 @@
             android:label="@string/register" >
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/login" >
+            android:name=".SignInActivity"
+            android:label="@string/title_activity_sing_in"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lynx.MainActivity" />
         </activity>
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
     </application>
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
 </manifest>
