@@ -13,28 +13,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/section_label"
-        android:layout_toRightOf="@+id/section_label"
-        android:orientation="vertical" >
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
 
-        <TextView
-            android:id="@+id/textView1"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="@string/action_register"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+        <TextView 
+            android:id="@+id/userText" 
+            android:layout_width="wrap_content" 
+            android:layout_height="0dp" 
+            android:layout_weight="1" 
+            android:text="@string/action_register" 
+            android:textAppearance="?android:attr/textAppearanceLarge" 
             android:textSize="50sp" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/usernameRegister"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="32dp"
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/prompt_username" >
@@ -43,27 +48,30 @@
         </EditText>
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/displayNameRegister"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="32dp"
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/display_name"
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/passwordRegister"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="32dp"
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/confirmPasswordRegister"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="32dp"
             android:layout_weight="1"
             android:ems="10"
             android:hint="@string/confirm_password"
@@ -73,11 +81,12 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:text="@string/swipe_left"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="21sp" />
 
     </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

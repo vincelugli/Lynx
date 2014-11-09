@@ -17,5 +17,6 @@
     <string name="title_section3">Section 3</string>
     <string name="hello_world">Hello world!</string>
     <string name="swipe_left">Swipe Left to Link to Accounts</string>
+    <string name="title_activity_lynx_app">LYNX</string>
 
 </resources>

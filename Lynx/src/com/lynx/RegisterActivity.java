@@ -8,6 +8,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ActionBar.Tab;
+import android.content.Intent;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -81,49 +82,6 @@ public class RegisterActivity extends Activity {
 				// probably ignore this event
 			}
 		};
-		
-//		class CustomTabListener<T extends Fragment> implements ActionBar.TabListener {
-//			
-//			private Fragment fragment;
-//			
-//			private static final	 String TAG = "test";
-//			
-//			public CustomTabListener(Fragment fragment) {
-//				this.fragment = fragment;
-//			}
-//
-//			@Override
-//			public void onTabSelected(Tab tab, FragmentTransaction ft) {
-//				// TODO Auto-generated method stub
-//				mViewPager.setCurrentItem(tab.getPosition());
-//			}
-//
-//			@Override
-//			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-//				// TODO Auto-generated method stub
-//			}
-//
-//			@Override
-//			public void onTabReselected(Tab tab, FragmentTransaction ft) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//		}
-
-//		Tab registerTab = actionBar.newTab();
-//		Tab facebookTab = actionBar.newTab();
-//		Tab linkedInTab = actionBar.newTab();
-//		Tab googleTab = actionBar.newTab();
-//		Tab twitterTab = actionBar.newTab();
-//		Tab goTab = actionBar.newTab();
-//		
-//		// Initialize Fragments
-//		FacebookFragment facebook = new FacebookFragment();
-//		
-//		// Update Tabs
-//		facebookTab.setText("BLARRRG")
-//					.setContentDescription("Facebook Tab")
-//					.setTabListener(new CustomTabListener<FacebookFragment>(facebook));
 		
 		// Add tabs to action bar
 		actionBar.addTab(
@@ -426,5 +384,11 @@ public class RegisterActivity extends Activity {
 					container, false);
 			return rootView;
 		}
+	}
+	
+	public void goToLynx(View view) {
+		Intent lynxIntent = new Intent(this, LynxAppActivity.class);
+		
+		startActivity(lynxIntent);
 	}
 }
